@@ -1,0 +1,25 @@
+{% extends "home.html" %}
+{%block content %}
+   {% include 'nav-bar.html' %}
+   
+   <div class="col-md-6 offset-md-4">
+    {% if user.is_authenticated %}
+   hello World
+   {% else %}
+    <h1>Login</h1>
+   <form method="POST" action="{% url 'home' %}">
+    
+     {% csrf_token %}
+     <form>
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Enter the Username" name="username" required>
+        </div>
+        <div class="mb-3">
+          <input type="password" class="form-control" placeholder="Ener the Password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+   </form>
+   {%endif%}
+</div>
+{% endblock %}
